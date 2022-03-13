@@ -23,26 +23,29 @@ class QuotesTest < ApplicationSystemTestCase
 
     # We expect to be back on the page with the title 'Quotes'
     # and to see our 'Capybara quote' added to the list
-    asser_selector 'h1', text: 'Quotes'
+    assert_selector 'h1', text: 'Quotes'
     click_on 'Capybara quote'
   end
 
   test 'Showing a quote' do
     visit quotes_path
     click_link @quote.name
-    
+
     assert_selector 'h1', text: @quote.name
   end
 
-  test 'Updating a quote' do
+  test "Updating a quote" do
     visit quotes_path
-    assert_selector 'h1', text: 'Edit quote'
+    assert_selector "h1", text: "Quotes"
 
-    fill_in 'Name', with: 'Updated quote'
-    click_on 'Update quote'
+    click_on "Edit", match: :first
+    assert_selector "h1", text: "Edit quote"
 
-    assert_selector 'h1', text: 'Quotes'
-    assert_text 'Updated quote'
+    fill_in "Name", with: "Updated quote"
+    click_on "Update quote"
+
+    assert_selector "h1", text: "Quotes"
+    assert_text "Updated quote"
   end
 
   test 'Destroy a quote' do

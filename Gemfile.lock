@@ -205,6 +205,9 @@ GEM
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
+    simple_form (5.1.0)
+      actionpack (>= 5.2)
+      activemodel (>= 5.2)
     solargraph (0.44.3)
       backport (~> 1.2)
       benchmark
@@ -273,6 +276,7 @@ DEPENDENCIES
   rails (~> 7.0.2)
   rubocop (>= 0.52)
   selenium-webdriver
+  simple_form (~> 5.1.0)
   solargraph (~> 0.44.3)
   sprockets-rails
   stimulus-rails
