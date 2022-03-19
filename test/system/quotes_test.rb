@@ -5,6 +5,51 @@ class QuotesTest < ApplicationSystemTestCase
     @quote = quotes(:first)
   end
 
+  # This tests where created for the Turbo frame implementation
+  test 'Showing a quote' do
+    visit quotes_path
+    click_link @quote.name
+
+    assert_selector 'h1', text: @quote.name
+  end
+
+  test 'Creating a new quote' do
+    visit quotes_path
+    assert_selector 'h1', text: 'Quotes'
+
+    click_on 'New quote'
+    fill_in 'Name', with: 'Capybara quote'
+
+    assert_selector 'h1', text: 'Quotes'
+    assert_text 'Capybara quote'
+  end
+
+  test 'Updating a quote' do
+    visit quotes_path
+    assert_selector 'h1', text: 'Quotes'
+
+    click_on 'Edit', match: :first
+    fill_in 'Name', with: 'Updated quote'
+
+    assert_selector 'h1', text: 'Quotes'
+    click_on 'Update quote'
+
+    assert_selector 'h1', text: 'Quotes'
+    assert_text 'Updated quote'
+  end
+
+  test 'Destroying a quote' do
+    visit quotes_path
+    assert_text @quote.name
+
+    click_on 'Delete', match: :first
+    assert_no_text @quote.name
+  end
+
+=begin
+
+  # This bellow test where created before for the default CRUD create before implemented at the begining of the study
+
   test 'Creating a new quote' do
     # When we visit the Quotes#index page
     # we expect to see a title with thetext 'Quotes'
@@ -55,4 +100,5 @@ class QuotesTest < ApplicationSystemTestCase
     click_on 'Delete', match: :first
     assert_no_text @quote.name
   end
+=end
 end
