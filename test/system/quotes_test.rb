@@ -2,7 +2,7 @@ require 'application_system_test_case'
 
 class QuotesTest < ApplicationSystemTestCase
   setup do
-    @quote = quotes(:first)
+    @quote = Quote.ordered.first
   end
 
   # This tests where created for the Turbo frame implementation
@@ -19,6 +19,9 @@ class QuotesTest < ApplicationSystemTestCase
 
     click_on 'New quote'
     fill_in 'Name', with: 'Capybara quote'
+
+    assert_selector 'h1', text: 'Quotes'
+    click_on 'Create quote'
 
     assert_selector 'h1', text: 'Quotes'
     assert_text 'Capybara quote'
