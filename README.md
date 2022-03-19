@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This repository is a study of new turbo freme feature implemented on Rails 7
 
-Things you may want to cover:
+[The article in witch this repository is based](https://www.hotrails.dev/turbo-rails/turbo-drive)
 
-* Ruby version
+Main system information:
 
-* System dependencies
+* Ruby version: 3.0.0
 
-* Configuration
+* Rails version: 7.0.2
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* How to run the test suite: bin/rails test:system
